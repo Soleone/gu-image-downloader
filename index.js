@@ -2,8 +2,8 @@ import fetch from "node-fetch";
 import fs from "fs";
 
 const BASE_URL = "https://card.godsunchained.com/?q=4&id=";
-const startId = 2401
-const maxId = 2553
+const startId = 2401;
+const maxId = 2553;
 
 async function downloadImage(id) {
   const url = `${BASE_URL}${id}`;
@@ -13,9 +13,9 @@ async function downloadImage(id) {
   const name = protoData.name;
   const arrayBuffer = await response.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
-  const filename = `images/${id}-${name}.jpg`
-  await fs.writeFile(filename, buffer, (error) => { error && console.log(error) })
-  console.log(`Downloaded image ${filename}`)
+  const filename = `images/${id}-${name}.jpg`;
+  await fs.writeFile(filename, buffer, (error) => { error && console.log(error) });
+  console.log(`Downloaded image ${filename}`);
 }
 
 function downloadImages() {
